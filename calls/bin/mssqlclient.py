@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
         def do_xp_cmdshell(self, s):
             try:
-                replies = self.sql.sql_query("exec master..xp_cmdshell '%s'" % s)
+                replies = self.sql.sql_query("exec main..xp_cmdshell '%s'" % s)
                 self.sql.printReplies()
                 self.sql.colMeta[0]['TypeData'] = 80*2
                 self.sql.printRows()
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     
         def do_enable_xp_cmdshell(self, line):
             try:
-                replies = self.sql.sql_query("exec master.dbo.sp_configure 'show advanced options',1;RECONFIGURE;exec master.dbo.sp_configure 'xp_cmdshell', 1;RECONFIGURE;")
+                replies = self.sql.sql_query("exec main.dbo.sp_configure 'show advanced options',1;RECONFIGURE;exec main.dbo.sp_configure 'xp_cmdshell', 1;RECONFIGURE;")
                 self.sql.printReplies()
                 self.sql.printRows()
             except Exception, e:
