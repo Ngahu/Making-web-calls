@@ -138,8 +138,8 @@ class SymbolicAxis(NumericAxis):
         return self.values
 
 class ParallelCoordinates(Tkinter.Canvas):
-    def __init__(self, master=None, cnf={}, **kw):
-        apply(Tkinter.Canvas.__init__, (self, master, cnf), kw)
+    def __init__(self, main=None, cnf={}, **kw):
+        apply(Tkinter.Canvas.__init__, (self, main, cnf), kw)
 
         self.lastSelection = None
         self.lastSelectionOval = None
@@ -152,10 +152,10 @@ class ParallelCoordinates(Tkinter.Canvas):
         self.values=[]
         self.mainAxis=SymbolicAxis(self,'mainAxis',[],'horizontal')
 
-        master.bind('<Visibility>',self.draw)
-        master.bind('<Motion>',self.buttonDown)
-        master.bind('<1>',self.buttonDown)
-        master.bind('<ButtonRelease-1>',self.buttonUp)
+        main.bind('<Visibility>',self.draw)
+        main.bind('<Motion>',self.buttonDown)
+        main.bind('<1>',self.buttonDown)
+        main.bind('<ButtonRelease-1>',self.buttonUp)
 
     def addAxis(self,axis):
         self.mainAxis.addValue(axis,0)
